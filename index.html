@@ -470,7 +470,7 @@
   </div>
 
 <script>
-  // Curriculum configuration referencing images from the "images/" folder
+  // Curriculum configuration (The correct answer is stored explicitly in 'correct' property)
   const challenges = {
     1: {
       title: "Step 1: Welcome to Google Suite",
@@ -478,10 +478,10 @@
       task: "This is the Google Suite! Open a new Chrome tab and click the 9 dots (Waffle icon) in the top right corner to explore your apps.",
       images: ["images/step-1-waffle-1.png", "images/step-1-waffle-2.png"],
       quiz: [
-        { q: "1. What is the main purpose of Google Drive?", options: ["To store and organize all our school resources", "To send text messages", "To play video games"], ans: 0 },
-        { q: "2. How do you find all your Google apps in Chrome?", options: ["Click the 9 dots (Waffle) icon", "Turn off the laptop", "Search on YouTube"], ans: 0 },
-        { q: "3. What app is primarily used for writing assignments?", options: ["Google Docs", "Google Maps", "Google Earth"], ans: 0 },
-        { q: "4. Which Google app do we use to create presentations?", options: ["Google Slides", "Google Docs", "Gmail"], ans: 0 }
+        { q: "1. What is the main purpose of Google Drive?", options: ["To store and organize all our school resources", "To send text messages", "To play video games"], correct: "To store and organize all our school resources" },
+        { q: "2. How do you find all your Google apps in Chrome?", options: ["Click the 9 dots (Waffle) icon", "Turn off the laptop", "Search on YouTube"], correct: "Click the 9 dots (Waffle) icon" },
+        { q: "3. What app is primarily used for writing assignments?", options: ["Google Docs", "Google Maps", "Google Earth"], correct: "Google Docs" },
+        { q: "4. Which Google app do we use to create presentations?", options: ["Google Slides", "Google Docs", "Gmail"], correct: "Google Slides" }
       ]
     },
     2: {
@@ -490,9 +490,9 @@
       task: "Open Google Chrome and click 'Gmail' in the top right corner. Practice opening a new message, typing your teacher's name in the 'To:' field, adding a Subject Heading, and typing a polite message.",
       images: ["images/step-2-email-1.png", "images/step-2-email-2.png", "images/step-2-email-3.png"],
       quiz: [
-        { q: "1. What should you always include before sending a professional email?", options: ["A clear Subject Heading and polite greeting", "A random emoji only", "Leave everything blank"], ans: 0 },
-        { q: "2. How does Gmail help you address emails to your teachers?", options: ["It suggests their full email when you start typing their name in the 'To:' box", "You must memorize their whole address number", "It sends it automatically without typing"], ans: 0 },
-        { q: "3. Why is it important to be polite in school communications?", options: ["It shows respect and ensures clear, professional communication", "It makes the email send faster", "It is required to unlock Chrome"], ans: 0 }
+        { q: "1. What should you always include before sending a professional email?", options: ["A clear Subject Heading and polite greeting", "A random emoji only", "Leave everything blank"], correct: "A clear Subject Heading and polite greeting" },
+        { q: "2. How does Gmail help you address emails to your teachers?", options: ["It suggests their full email when you start typing their name in the 'To:' box", "You must memorize their whole address number", "It sends it automatically without typing"], correct: "It suggests their full email when you start typing their name in the 'To:' box" },
+        { q: "3. Why is it important to be polite in school communications?", options: ["It shows respect and ensures clear, professional communication", "It makes the email send faster", "It is required to unlock Chrome"], correct: "It shows respect and ensures clear, professional communication" }
       ]
     },
     3: {
@@ -501,9 +501,9 @@
       task: "Open Google Drive. Click '+ New' and make a folder called 'Grade 6 Science'. Inside it, make a sub-folder called 'Unit 1'. Practice dragging loose files into folders to keep your Drive organized.",
       images: ["images/step-3-drive-folders-1.png", "images/step-3-drive-folders-2.png", "images/step-3-drive-folders.gif"],
       quiz: [
-        { q: "1. What button creates a new folder in Drive?", options: ["+ New button", "Search bar", "Trash"], ans: 0 },
-        { q: "2. How can you quickly move a loose file into a folder in Drive?", options: ["Click, drag, and drop it into the folder", "Delete the file", "Rename the file to 'Folder'"], ans: 0 },
-        { q: "3. Why is it important to keep your Google Drive tidy?", options: ["To stay organized and find schoolwork quickly", "It saves laptop battery", "It bolds your text"], ans: 0 }
+        { q: "1. What button creates a new folder in Drive?", options: ["+ New button", "Search bar", "Trash"], correct: "+ New button" },
+        { q: "2. How can you quickly move a loose file into a folder in Drive?", options: ["Click, drag, and drop it into the folder", "Delete the file", "Rename the file to 'Folder'"], correct: "Click, drag, and drop it into the folder" },
+        { q: "3. Why is it important to keep your Google Drive tidy?", options: ["To stay organized and find schoolwork quickly", "It saves laptop battery", "It bolds your text"], correct: "To stay organized and find schoolwork quickly" }
       ]
     },
     4: {
@@ -511,10 +511,10 @@
       task: "Go inside your 'Unit 1' folder in Drive. Click '+ New' and create a new Google Doc inside this folder. Title it 'My Journal'.",
       images: ["images/step-4-create-doc-1.png", "images/step-4-create-doc-2.png", "images/step-4-create-doc-3.png"],
       quiz: [
-        { q: "1. Where should you create new school documents?", options: ["Inside the specific class or unit folder", "In the Trash folder", "On the general desktop"], ans: 0 },
-        { q: "2. How are files saved when created inside a folder?", options: ["They are automatically saved directly inside that folder", "They save to your Downloads folder", "You must manually export them"], ans: 0 },
-        { q: "3. How do you rename an untitled Google Doc?", options: ["Click 'Untitled Document' at the top left corner", "Type the name inside sentence 1", "Close the browser tab"], ans: 0 },
-        { q: "4. [Review] What app is best used for slideshow presentations?", options: ["Google Slides", "Google Docs", "Google Drive"], ans: 0 }
+        { q: "1. Where should you create new school documents?", options: ["Inside the specific class or unit folder", "In the Trash folder", "On the general desktop"], correct: "Inside the specific class or unit folder" },
+        { q: "2. How are files saved when created inside a folder?", options: ["They are automatically saved directly inside that folder", "They save to your Downloads folder", "You must manually export them"], correct: "They are automatically saved directly inside that folder" },
+        { q: "3. How do you rename an untitled Google Doc?", options: ["Click 'Untitled Document' at the top left corner", "Type the name inside sentence 1", "Close the browser tab"], correct: "Click 'Untitled Document' at the top left corner" },
+        { q: "4. [Review] What app is best used for slideshow presentations?", options: ["Google Slides", "Google Docs", "Google Drive"], correct: "Google Slides" }
       ]
     },
     5: {
@@ -522,9 +522,9 @@
       task: "In 'My Journal', type three sentences. Make Sentence 1 BOLD. Make Sentence 2 ITALIC. Highlight Sentence 3 YELLOW.",
       images: ["images/step-5-formatting.png"],
       quiz: [
-        { q: "1. Which icon toolbar letter makes text BOLD?", options: ["B", "I", "U"], ans: 0 },
-        { q: "2. Which keyboard shortcut makes text Bold?", options: ["Ctrl + B (or Cmd + B)", "Ctrl + Z", "Ctrl + P"], ans: 0 },
-        { q: "3. What tool changes the background color behind text?", options: ["Text Color", "Highlight Color", "Font Size"], ans: 1 }
+        { q: "1. Which icon toolbar letter makes text BOLD?", options: ["B", "I", "U"], correct: "B" },
+        { q: "2. Which keyboard shortcut makes text Bold?", options: ["Ctrl + B (or Cmd + B)", "Ctrl + Z", "Ctrl + P"], correct: "Ctrl + B (or Cmd + B)" },
+        { q: "3. What tool changes the background color behind text?", options: ["Highlight Color", "Text Color", "Font Size"], correct: "Highlight Color" }
       ]
     },
     6: {
@@ -532,9 +532,9 @@
       task: "Practice fast shortcuts! Select text in Docs. Press Ctrl+C to copy, and Ctrl+V to paste it below. Practice Ctrl+Z to undo.",
       images: ["images/step-6-shortcuts-1.gif", "images/step-6-shortcuts-2.png"],
       quiz: [
-        { q: "1. What does the Ctrl + Z shortcut do?", options: ["Copy text", "Undo your last action", "Paste text"], ans: 1 },
-        { q: "2. What is the keyboard shortcut to Paste?", options: ["Ctrl + V", "Ctrl + P", "Ctrl + C"], ans: 0 },
-        { q: "3. [Review] Where do you change sharing settings in Docs?", options: ["Share button (top right corner)", "File -> Print", "View menu"], ans: 0 }
+        { q: "1. What does the Ctrl + Z shortcut do?", options: ["Undo your last action", "Copy text", "Paste text"], correct: "Undo your last action" },
+        { q: "2. What is the keyboard shortcut to Paste?", options: ["Ctrl + V", "Ctrl + P", "Ctrl + C"], correct: "Ctrl + V" },
+        { q: "3. [Review] Where do you change sharing settings in Docs?", options: ["Share button (top right corner)", "File -> Print", "View menu"], correct: "Share button (top right corner)" }
       ]
     },
     7: {
@@ -542,9 +542,9 @@
       task: "Click the blue 'Share' button on your Doc. Change access to 'Anyone with link can VIEW'. Copy the link, open Gmail, and paste the link into an email to your homeroom teacher.",
       images: ["images/step-7-share-link.png"],
       quiz: [
-        { q: "1. 'Viewer' access means other people can:", options: ["Only read your document without editing", "Delete your text", "Re-title your doc"], ans: 0 },
-        { q: "2. What should you do after copying a share link?", options: ["Paste it into an email to your teacher", "Close your laptop", "Delete the file"], ans: 0 },
-        { q: "3. What mode blocks everyone except explicitly added users?", options: ["Restricted mode", "Viewer mode", "Editor mode"], ans: 0 }
+        { q: "1. 'Viewer' access means other people can:", options: ["Only read your document without editing", "Delete your text", "Re-title your doc"], correct: "Only read your document without editing" },
+        { q: "2. What should you do after copying a share link?", options: ["Paste it into an email to your teacher", "Close your laptop", "Delete the file"], correct: "Paste it into an email to your teacher" },
+        { q: "3. What mode blocks everyone except explicitly added users?", options: ["Restricted mode", "Viewer mode", "Editor mode"], correct: "Restricted mode" }
       ]
     },
     8: {
@@ -552,9 +552,9 @@
       task: "Go to your Google Drive, find your 'Unit 1' folder, and open 'My Journal'. Click File -> Download -> PDF Document (.pdf) to save a copy to your computer.",
       images: ["images/step-8-download-pdf.png"],
       quiz: [
-        { q: "1. Where do you find 'My Journal' to download it?", options: ["In Google Drive -> Unit 1 folder", "In Chrome Downloads", "In Trash"], ans: 0 },
-        { q: "2. Which menu path downloads your Doc as a PDF?", options: ["File -> Download -> PDF Document (.pdf)", "Edit -> Select All", "View -> Full Screen"], ans: 0 },
-        { q: "3. Why export work as a PDF?", options: ["It preserves formatting across all devices", "It deletes the file from Drive", "It adds audio clips"], ans: 0 }
+        { q: "1. Where do you find 'My Journal' to download it?", options: ["In Google Drive -> Unit 1 folder", "In Chrome Downloads", "In Trash"], correct: "In Google Drive -> Unit 1 folder" },
+        { q: "2. Which menu path downloads your Doc as a PDF?", options: ["File -> Download -> PDF Document (.pdf)", "Edit -> Select All", "View -> Full Screen"], correct: "File -> Download -> PDF Document (.pdf)" },
+        { q: "3. Why export work as a PDF?", options: ["It preserves formatting across all devices", "It deletes the file from Drive", "It adds audio clips"], correct: "It preserves formatting across all devices" }
       ]
     },
     9: {
@@ -562,9 +562,9 @@
       task: "Open Drive. Create a Google Slide inside 'Unit 1'. Change the slide background color, insert an image, and re-order slides in the left panel.",
       images: ["images/step-9-slides-1.png", "images/step-9-slides-1.gif", "images/step-9-slides-2.png"],
       quiz: [
-        { q: "1. How do you change slide appearance in Google Slides?", options: ["Right click slide -> Change Background", "Press Ctrl + Z", "Close tab"], ans: 0 },
-        { q: "2. How can you re-order slides in a deck?", options: ["Drag and drop slides in the left panel preview", "Type new numbers", "Export as PDF"], ans: 0 },
-        { q: "3. What menu option inserts images or text boxes?", options: ["Insert menu", "File menu", "Format menu"], ans: 0 }
+        { q: "1. How do you change slide appearance in Google Slides?", options: ["Right click slide -> Change Background", "Press Ctrl + Z", "Close tab"], correct: "Right click slide -> Change Background" },
+        { q: "2. How can you re-order slides in a deck?", options: ["Drag and drop slides in the left panel preview", "Type new numbers", "Export as PDF"], correct: "Drag and drop slides in the left panel preview" },
+        { q: "3. What menu option inserts images or text boxes?", options: ["Insert menu", "File menu", "Format menu"], correct: "Insert menu" }
       ]
     },
     10: {
@@ -572,16 +572,16 @@
       task: "Complete this full 10-question mastery quiz covering Drive, Docs, Gmail, Formatting, Shortcuts, Sharing, PDFs, and Slides!",
       images: ["images/step-10-review.png"],
       quiz: [
-        { q: "1. [Drive] How do you keep loose files organized in Google Drive?", options: ["Drag and drop them into the correct folder", "Leave them in Trash", "Rename everything 'Doc'"], ans: 0 },
-        { q: "2. [Email] What helps you address an email quickly to a teacher in Gmail?", options: ["Start typing their name in the 'To:' field", "Call them on the phone", "Look up their home address"], ans: 0 },
-        { q: "3. [Email] What should always be included in a polite school email?", options: ["A clear Subject Heading and respectful message", "Only emojis", "Leave subject line empty"], ans: 0 },
-        { q: "4. [Docs] How are new files saved when created inside a specific folder?", options: ["Automatically saved inside that active folder", "Saved to computer Desktop", "Saved to Trash"], ans: 0 },
-        { q: "5. [Formatting] Which toolbar tool changes the color behind selected text?", options: ["Highlight Color tool", "Font Size tool", "Page Orientation"], ans: 0 },
-        { q: "6. [Shortcuts] What is the keyboard shortcut to undo an accidental change?", options: ["Ctrl + Z (or Cmd + Z)", "Ctrl + C", "Ctrl + P"], ans: 0 },
-        { q: "7. [Sharing] What permission level allows others to view but not edit your document?", options: ["Viewer mode", "Editor mode", "Owner mode"], ans: 0 },
-        { q: "8. [PDF] What is the menu path to export your document as a PDF file?", options: ["File -> Download -> PDF Document (.pdf)", "Edit -> Select All", "View -> Zoom"], ans: 0 },
-        { q: "9. [Slides] How can you change the order of slides in Google Slides?", options: ["Drag and drop slide thumbnails in the left panel", "Delete and re-type them", "File -> Print"], ans: 0 },
-        { q: "10. [ManageBac] Where do you check official school assignment details & schedules?", options: ["ManageBac", "Google Maps", "Google Earth"], ans: 0 }
+        { q: "1. [Drive] How do you keep loose files organized in Google Drive?", options: ["Drag and drop them into the correct folder", "Leave them in Trash", "Rename everything 'Doc'"], correct: "Drag and drop them into the correct folder" },
+        { q: "2. [Email] What helps you address an email quickly to a teacher in Gmail?", options: ["Start typing their name in the 'To:' field", "Call them on the phone", "Look up their home address"], correct: "Start typing their name in the 'To:' field" },
+        { q: "3. [Email] What should always be included in a polite school email?", options: ["A clear Subject Heading and respectful message", "Only emojis", "Leave subject line empty"], correct: "A clear Subject Heading and respectful message" },
+        { q: "4. [Docs] How are new files saved when created inside a specific folder?", options: ["Automatically saved inside that active folder", "Saved to computer Desktop", "Saved to Trash"], correct: "Automatically saved inside that active folder" },
+        { q: "5. [Formatting] Which toolbar tool changes the color behind selected text?", options: ["Highlight Color tool", "Font Size tool", "Page Orientation"], correct: "Highlight Color tool" },
+        { q: "6. [Shortcuts] What is the keyboard shortcut to undo an accidental change?", options: ["Ctrl + Z (or Cmd + Z)", "Ctrl + C", "Ctrl + P"], correct: "Ctrl + Z (or Cmd + Z)" },
+        { q: "7. [Sharing] What permission level allows others to view but not edit your document?", options: ["Viewer mode", "Editor mode", "Owner mode"], correct: "Viewer mode" },
+        { q: "8. [PDF] What is the menu path to export your document as a PDF file?", options: ["File -> Download -> PDF Document (.pdf)", "Edit -> Select All", "View -> Zoom"], correct: "File -> Download -> PDF Document (.pdf)" },
+        { q: "9. [Slides] How can you change the order of slides in Google Slides?", options: ["Drag and drop slide thumbnails in the left panel", "Delete and re-type them", "File -> Print"], correct: "Drag and drop slide thumbnails in the left panel" },
+        { q: "10. [ManageBac] Where do you check official school assignment details & schedules?", options: ["ManageBac", "Google Maps", "Google Earth"], correct: "ManageBac" }
       ]
     },
     "extension": {
@@ -591,8 +591,8 @@
       task: "1. Go to Drive and create a folder named 'GSuite Master Project'.\n2. Inside it, create a Doc named 'Final Reflection'.\n3. Write 2 sentences. Make sentence 1 Bold and sentence 2 Highlighted.\n4. Download the Doc as a PDF.\n5. Open Gmail and send an email to gudruni@ptis.ac.th with your PDF attached!",
       images: ["images/extension-master-project.png"],
       quiz: [
-        { q: "1. Did you attach your downloaded PDF to the email?", options: ["Yes, attached!", "Not yet"], ans: 0 },
-        { q: "2. What email address did you send the final project to?", options: ["gudruni@ptis.ac.th", "teacher@gmail.com"], ans: 0 }
+        { q: "1. Did you attach your downloaded PDF to the email?", options: ["Yes, attached!", "Not yet"], correct: "Yes, attached!" },
+        { q: "2. What email address did you send the final project to?", options: ["gudruni@ptis.ac.th", "teacher@gmail.com"], correct: "gudruni@ptis.ac.th" }
       ]
     }
   };
@@ -600,6 +600,16 @@
   let activeStep = null;
   let completedSteps = JSON.parse(localStorage.getItem('gsuite_completed_steps_v3')) || [];
   let completedExtension = localStorage.getItem('gsuite_extension_completed_v3') === 'true';
+
+  // Array shuffle helper function
+  function shuffleArray(array) {
+    const arr = [...array];
+    for (let i = arr.length - 1; i > 0; i--) {
+      const j = Math.floor(Math.random() * (i + 1));
+      [arr[i], arr[j]] = [arr[j], arr[i]];
+    }
+    return arr;
+  }
 
   // Build Grid Cards Dynamically
   const grid = document.getElementById('card-grid');
@@ -653,14 +663,15 @@
       infoBox.style.display = 'none';
     }
     
-    // Render Quiz Questions
+    // Render Quiz Questions with Randomly Shuffled Options
     const container = document.getElementById('quiz-container');
     container.innerHTML = '';
     
     data.quiz.forEach((qItem, qIdx) => {
-      let optionsHTML = qItem.options.map((opt, oIdx) => `
+      const shuffledOptions = shuffleArray(qItem.options);
+      let optionsHTML = shuffledOptions.map((opt) => `
         <label>
-          <input type="radio" name="q${qIdx}" value="${oIdx}"> ${opt}
+          <input type="radio" name="q${qIdx}" value="${opt.replace(/"/g, '&quot;')}"> ${opt}
         </label>
       `).join('');
       
@@ -692,7 +703,7 @@
 
     data.quiz.forEach((qItem, qIdx) => {
       const selected = document.querySelector(`input[name="q${qIdx}"]:checked`);
-      if (selected && parseInt(selected.value) === qItem.ans) {
+      if (selected && selected.value === qItem.correct) {
         score++;
       }
     });
