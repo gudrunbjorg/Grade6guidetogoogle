@@ -1,0 +1,743 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Grade 6 Guide to Google Suite</title>
+  <style>
+    :root {
+      --bg: #ffffff;
+      --panel-bg: #f8fafc;
+      --forest-green: #14532d;
+      --forest-green-hover: #166534;
+      --gold: #b45309;
+      --gold-hover: #92400e;
+      --success: #22c55e;
+      --text: #0f172a;
+      --text-muted: #475569;
+      --border: #e2e8f0;
+    }
+
+    * { box-sizing: border-box; margin: 0; padding: 0; font-family: 'Segoe UI', system-ui, sans-serif; }
+
+    body {
+      background-color: var(--bg);
+      color: var(--text);
+      display: flex;
+      height: 100vh;
+      overflow: hidden;
+    }
+
+    /* Sidebar Navigation */
+    aside {
+      width: 260px;
+      background: var(--panel-bg);
+      border-right: 1px solid var(--border);
+      display: flex;
+      flex-direction: column;
+      padding: 24px 16px;
+      flex-shrink: 0;
+    }
+
+    .logo-container {
+      width: 100%;
+      height: 70px;
+      background: #ffffff;
+      border: 2px dashed var(--border);
+      border-radius: 8px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      margin-bottom: 20px;
+      overflow: hidden;
+    }
+
+    .logo-container img {
+      max-width: 100%;
+      max-height: 100%;
+      object-fit: contain;
+    }
+
+    aside h2 {
+      font-size: 0.9rem;
+      color: var(--forest-green);
+      margin-bottom: 15px;
+      text-transform: uppercase;
+      letter-spacing: 1px;
+    }
+
+    .app-links { display: flex; flex-direction: column; gap: 10px; flex-grow: 1; }
+
+    .app-btn {
+      display: flex;
+      align-items: center;
+      gap: 12px;
+      background: #ffffff;
+      color: var(--text);
+      text-decoration: none;
+      padding: 12px 16px;
+      border-radius: 8px;
+      font-weight: 600;
+      border: 1px solid var(--border);
+      transition: all 0.2s ease;
+    }
+
+    .app-btn svg {
+      width: 20px;
+      height: 20px;
+      flex-shrink: 0;
+    }
+
+    .app-btn:hover {
+      background: var(--forest-green);
+      color: #ffffff;
+      border-color: var(--forest-green);
+    }
+
+    .app-btn:hover svg path {
+      fill: #ffffff !important;
+    }
+
+    /* Main Dashboard Board */
+    main {
+      flex: 1;
+      padding: 40px;
+      overflow-y: auto;
+    }
+
+    header { margin-bottom: 25px; }
+    header h1 { font-size: 2.2rem; color: var(--forest-green); margin-bottom: 6px; }
+    header .subheading { color: var(--forest-green); font-size: 1.15rem; font-weight: 600; margin-bottom: 6px; }
+    header p { color: var(--text-muted); font-size: 1rem; }
+
+    .progress-banner {
+      background: var(--panel-bg);
+      padding: 20px 24px;
+      border-radius: 12px;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      margin-bottom: 30px;
+      border: 1px solid var(--border);
+      flex-wrap: wrap;
+      gap: 10px;
+    }
+
+    .btn-group { display: flex; gap: 10px; }
+
+    .cert-btn {
+      background: var(--success);
+      color: #ffffff;
+      border: none;
+      padding: 10px 18px;
+      border-radius: 6px;
+      font-weight: bold;
+      font-size: 0.95rem;
+      cursor: pointer;
+      display: none;
+    }
+
+    .genius-cert-btn {
+      background: var(--gold);
+      color: #ffffff;
+      border: none;
+      padding: 10px 18px;
+      border-radius: 6px;
+      font-weight: bold;
+      font-size: 0.95rem;
+      cursor: pointer;
+      display: none;
+    }
+
+    /* Cards Grid */
+    .grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fill, minmax(220px, 1fr));
+      gap: 20px;
+    }
+
+    .card {
+      background: var(--forest-green);
+      color: #ffffff;
+      border: 2px solid var(--forest-green);
+      border-radius: 12px;
+      padding: 24px 18px;
+      text-align: center;
+      cursor: pointer;
+      transition: all 0.2s ease;
+      position: relative;
+    }
+
+    .card.extension-card {
+      background: var(--gold);
+      border-color: var(--gold);
+    }
+
+    .card.extension-card:hover {
+      background: var(--gold-hover);
+    }
+
+    .card:hover {
+      background: var(--forest-green-hover);
+      transform: translateY(-3px);
+      box-shadow: 0 6px 16px rgba(20, 83, 45, 0.25);
+    }
+
+    .card.completed {
+      background: #f0fdf4;
+      color: var(--text);
+      border-color: var(--success);
+    }
+
+    .card.completed h3 { color: var(--forest-green); }
+
+    .card.completed::after {
+      content: "✓ Done";
+      position: absolute;
+      top: 10px;
+      right: 10px;
+      background: var(--success);
+      color: #ffffff;
+      font-size: 0.75rem;
+      font-weight: bold;
+      padding: 2px 8px;
+      border-radius: 4px;
+    }
+
+    .card h3 { font-size: 1.3rem; color: #ffffff; margin-bottom: 8px; }
+    .card p { font-size: 0.95rem; opacity: 0.9; line-height: 1.3; }
+
+    /* Side Drawer */
+    .drawer-overlay {
+      position: fixed;
+      top: 0; left: 0; width: 100vw; height: 100vh;
+      background: rgba(15, 23, 42, 0.4);
+      opacity: 0; pointer-events: none;
+      transition: opacity 0.3s ease;
+      z-index: 90;
+    }
+
+    .drawer-overlay.open { opacity: 1; pointer-events: auto; }
+
+    .drawer {
+      position: fixed;
+      top: 0; right: -680px;
+      width: 680px; height: 100vh;
+      background: #ffffff;
+      border-left: 3px solid var(--forest-green);
+      box-shadow: -10px 0 25px rgba(0, 0, 0, 0.1);
+      z-index: 100;
+      transition: right 0.3s cubic-bezier(0.16, 1, 0.3, 1);
+      padding: 35px;
+      overflow-y: auto;
+      display: flex;
+      flex-direction: column;
+    }
+
+    .drawer.open { right: 0; }
+    .close-btn { background: none; border: none; color: var(--text-muted); font-size: 1.8rem; cursor: pointer; align-self: flex-end; }
+
+    .drawer h2 { color: var(--forest-green); margin-bottom: 15px; font-size: 1.6rem; }
+    
+    .info-note {
+      background: #e0f2fe;
+      border-left: 4px solid #0284c7;
+      color: #0369a1;
+      padding: 12px 16px;
+      border-radius: 6px;
+      margin-bottom: 15px;
+      font-size: 0.95rem;
+      line-height: 1.5;
+    }
+
+    .task-box { 
+      background: var(--panel-bg); 
+      padding: 18px; 
+      border-radius: 8px; 
+      margin-bottom: 20px; 
+      font-size: 1.05rem; 
+      line-height: 1.6; 
+      border: 1px solid var(--border); 
+      white-space: pre-line;
+    }
+
+    /* Multi-Image Gallery Container */
+    .gallery-container {
+      width: 100%;
+      margin-bottom: 25px;
+      background: var(--panel-bg);
+      border: 1px solid var(--border);
+      border-radius: 8px;
+      padding: 14px;
+      display: flex;
+      flex-direction: column;
+      gap: 12px;
+    }
+
+    .gallery-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(180px, 1fr));
+      gap: 10px;
+    }
+
+    .gallery-grid img {
+      width: 100%;
+      height: 140px;
+      object-fit: cover;
+      border-radius: 6px;
+      border: 1px solid var(--border);
+      cursor: zoom-in;
+      transition: transform 0.2s ease, box-shadow 0.2s ease;
+    }
+
+    .gallery-grid img:hover { 
+      transform: scale(1.03); 
+      box-shadow: 0 4px 12px rgba(0,0,0,0.15);
+    }
+
+    .img-caption { 
+      font-size: 0.85rem; 
+      color: var(--text-muted); 
+      text-align: center;
+      font-weight: 600;
+    }
+
+    /* Quiz Styling Options */
+    .quiz-section { border-top: 2px solid var(--border); padding-top: 20px; }
+    .quiz-question { margin-bottom: 22px; }
+    .quiz-question p { font-weight: 600; margin-bottom: 10px; font-size: 1.1rem; color: var(--text); }
+    
+    .quiz-options label {
+      display: flex;
+      align-items: center;
+      background: var(--panel-bg);
+      padding: 12px 16px;
+      border-radius: 8px;
+      margin-bottom: 10px;
+      cursor: pointer;
+      font-size: 1.05rem;
+      line-height: 1.8;
+      border: 1px solid var(--border);
+    }
+    
+    .quiz-options input { margin-right: 12px; transform: scale(1.2); }
+
+    .submit-btn {
+      width: 100%; background: var(--forest-green); color: #ffffff; border: none; padding: 14px; border-radius: 8px; font-weight: bold; font-size: 1.05rem; cursor: pointer; margin-top: 10px;
+    }
+    .submit-btn:hover { background: var(--forest-green-hover); }
+
+    /* Zoom / Spotlight Lightbox Modal */
+    .lightbox {
+      display: none; 
+      position: fixed; 
+      top: 0; left: 0; 
+      width: 100vw; height: 100vh;
+      background: rgba(0, 0, 0, 0.9); 
+      z-index: 300; 
+      justify-content: center; 
+      align-items: center;
+      cursor: zoom-out;
+      padding: 20px;
+    }
+
+    .lightbox img { 
+      max-width: 95%; 
+      max-height: 92vh; 
+      border-radius: 8px; 
+      box-shadow: 0 0 25px rgba(255,255,255,0.2);
+    }
+
+    /* Printable Standard Certificate Modal */
+    .cert-modal {
+      display: none; position: fixed; top: 50%; left: 50%; transform: translate(-50%, -50%);
+      background: #ffffff; color: #0f172a; padding: 40px; border-radius: 12px; text-align: center;
+      box-shadow: 0 0 40px rgba(0,0,0,0.3); z-index: 200; width: 90%; max-width: 600px;
+      border: 8px solid var(--forest-green);
+    }
+    .cert-modal h1 { color: var(--forest-green); font-size: 2.2rem; margin-bottom: 10px; }
+
+    /* Genius Certificate Modal */
+    .genius-modal {
+      display: none; position: fixed; top: 50%; left: 50%; transform: translate(-50%, -50%);
+      background: #fffbe0; color: #0f172a; padding: 40px; border-radius: 12px; text-align: center;
+      box-shadow: 0 0 40px rgba(0,0,0,0.4); z-index: 200; width: 90%; max-width: 600px;
+      border: 8px solid var(--gold);
+    }
+    .genius-modal h1 { color: var(--gold); font-size: 2.2rem; margin-bottom: 10px; }
+
+    .student-name-input { padding: 10px; width: 80%; margin: 15px 0; font-size: 1.1rem; text-align: center; border: 2px solid var(--border); border-radius: 6px; }
+  </style>
+</head>
+<body>
+
+  <aside>
+    <div class="logo-container">
+      <img src="prem-logo.png" alt="Prem Logo Placeholder" onerror="this.style.display='none'; this.parentNode.innerText='[ Prem Logo Here ]';">
+    </div>
+
+    <h2>Quick Launch</h2>
+    <div class="app-links">
+      <a href="https://docs.google.com" target="_blank" class="app-btn">
+        <svg viewBox="0 0 24 24"><path fill="#2684FC" d="M14 2H6c-1.1 0-1.99.9-1.99 2L4 20c0 1.1.89 2 1.99 2H18c1.1 0 2-.9 2-2V8l-6-6zm2 16H8v-2h8v2zm0-4H8v-2h8v2zm-3-5V3.5L18.5 9H13z"/></svg>
+        Google Docs
+      </a>
+      <a href="https://drive.google.com" target="_blank" class="app-btn">
+        <svg viewBox="0 0 24 24"><path fill="#FFC107" d="M7.71 3.5L1.15 15l3.43 6 6.55-11.5z"/><path fill="#0066DA" d="M16.29 3.5H7.71l6.55 11.5h8.58z"/><path fill="#00AC47" d="M4.58 21l3.43-6h13.13l-3.43 6z"/></svg>
+        Google Drive
+      </a>
+      <a href="https://slides.google.com" target="_blank" class="app-btn">
+        <svg viewBox="0 0 24 24"><path fill="#FFBA00" d="M19 3H5c-1.1 0-2 .9-2 2v14c0 1.1.9 2 2 2h14c1.1 0 2-.9 2-2V5c0-1.1-.9-2-2-2zm0 16H5V5h14v14z"/><path fill="#FFBA00" d="M8 8h8v6H8z"/></svg>
+        Google Slides
+      </a>
+      <a href="https://PTIS.managebac.com" target="_blank" class="app-btn">
+        <svg viewBox="0 0 24 24"><path fill="#14532D" d="M12 3L1 9l11 6 9-4.91V17h2V9L12 3zM5 13.18v4L12 21l7-3.82v-4L12 17l-7-3.82z"/></svg>
+        ManageBac
+      </a>
+    </div>
+  </aside>
+
+  <main>
+    <header>
+      <h1>Grade 6 Guide to Google Suite</h1>
+      <div class="subheading">Get good with Google Suite and Gmail right here.</div>
+      <p>5-minute morning challenges to build your digital skills, in homeroom or at home.</p>
+    </header>
+
+    <div class="progress-banner">
+      <div>
+        <h3>Course Progress</h3>
+        <p id="progress-status" style="color: var(--text-muted); font-size: 1rem; margin-top: 4px;">0 of 10 Steps Completed</p>
+      </div>
+      <div class="btn-group">
+        <button class="cert-btn" id="claim-cert-btn" onclick="openCert()">🏆 Standard Certificate</button>
+        <button class="genius-cert-btn" id="claim-genius-btn" onclick="openGeniusCert()">⭐ Genius Certificate</button>
+      </div>
+    </div>
+
+    <div class="grid" id="card-grid"></div>
+  </main>
+
+  <div class="drawer-overlay" id="overlay" onclick="closeDrawer()"></div>
+  
+  <div class="drawer" id="drawer">
+    <button class="close-btn" onclick="closeDrawer()">&times;</button>
+    <h2 id="drawer-title">Step 1 Challenge</h2>
+
+    <div class="info-note" id="drawer-info" style="display:none;"></div>
+    
+    <div class="task-box">
+      <strong>Task Instructions:</strong>
+      <p id="drawer-task" style="margin-top: 8px;">Task content goes here...</p>
+    </div>
+
+    <div class="gallery-container">
+      <div class="gallery-grid" id="gallery-grid"></div>
+      <div class="img-caption">🔍 Click any screenshot/GIF to spotlight and zoom in</div>
+    </div>
+
+    <div class="quiz-section">
+      <h3>Quick Check</h3>
+      <form id="quiz-form" style="margin-top: 15px;">
+        <div id="quiz-container"></div>
+        <button type="button" class="submit-btn" id="drawer-submit-btn" onclick="checkQuiz()">Submit Answers</button>
+      </form>
+    </div>
+  </div>
+
+  <div class="lightbox" id="lightbox" onclick="this.style.display='none'">
+    <img id="lightbox-img" src="" alt="Enlarged screenshot spotlight">
+  </div>
+
+  <div class="cert-modal" id="cert-modal">
+    <h1>CERTIFICATE OF ACHIEVEMENT</h1>
+    <p style="font-size: 1.1rem; margin-top: 10px;">This certifies that</p>
+    <input type="text" class="student-name-input" id="student-name" placeholder="Enter Your Full Name">
+    <p style="font-size: 1.05rem;">has successfully mastered the <strong>Grade 6 Google Suite Challenges</strong>!</p>
+    <p style="font-size: 0.85rem; color: #64748b; margin: 20px 0 15px 0;">Prem International School • Homeroom Program</p>
+    <button onclick="window.print()" style="padding: 10px 20px; background: var(--forest-green); color: white; border: none; border-radius: 6px; cursor: pointer; font-weight: bold;">Print Certificate</button>
+    <button onclick="closeCert()" style="padding: 10px 20px; background: var(--text-muted); color: white; border: none; border-radius: 6px; cursor: pointer; margin-left: 8px;">Close</button>
+  </div>
+
+  <div class="genius-modal" id="genius-modal">
+    <h1>GENIUS GOOGLE SUITE USER</h1>
+    <p style="font-size: 1.1rem; margin-top: 10px;">This special honors certificate is awarded to</p>
+    <input type="text" class="student-name-input" id="genius-student-name" placeholder="Enter Your Full Name">
+    <p style="font-size: 1.05rem;">for successfully completing the <strong>Master Extension Project</strong>!</p>
+    <p style="font-size: 0.85rem; color: #78350f; margin: 20px 0 15px 0;">Prem International School • Advanced Homeroom Mastery</p>
+    <button onclick="window.print()" style="padding: 10px 20px; background: var(--gold); color: white; border: none; border-radius: 6px; cursor: pointer; font-weight: bold;">Print Certificate</button>
+    <button onclick="closeGeniusCert()" style="padding: 10px 20px; background: var(--text-muted); color: white; border: none; border-radius: 6px; cursor: pointer; margin-left: 8px;">Close</button>
+  </div>
+
+<script>
+  // Curriculum configuration supporting image galleries & 10 review questions for Step 10
+  const challenges = {
+    1: {
+      title: "Step 1: Welcome to Google Suite",
+      infoNote: "These are the key features we will be using in our studies: Google Drive to store our resources, Google Docs for writing, and Google Slides for presentations.",
+      task: "This is the Google Suite! Open a new Chrome tab and click the 9 dots (Waffle icon) in the top right corner to explore your apps.",
+      images: ["step-1-waffle-1.png", "step-1-waffle-2.png"],
+      quiz: [
+        { q: "1. What is the main purpose of Google Drive?", options: ["To store and organize all our school resources", "To send text messages", "To play video games"], ans: 0 },
+        { q: "2. How do you find all your Google apps in Chrome?", options: ["Click the 9 dots (Waffle) icon", "Turn off the laptop", "Search on YouTube"], ans: 0 },
+        { q: "3. What app is primarily used for writing assignments?", options: ["Google Docs", "Google Maps", "Google Earth"], ans: 0 },
+        { q: "4. Which Google app do we use to create presentations?", options: ["Google Slides", "Google Docs", "Gmail"], ans: 0 }
+      ]
+    },
+    2: {
+      title: "Step 2: Accessing & Using Email",
+      infoNote: "Email Etiquette Tip: When typing a teacher's name in the 'To:' box, Gmail will automatically suggest their email address. Always include a clear Subject Heading and use polite language!",
+      task: "Open Google Chrome and click 'Gmail' in the top right corner. Practice opening a new message, typing your teacher's name in the 'To:' field, adding a Subject Heading, and typing a polite message.",
+      images: ["step-2-email-1.png", "step-2-email-2.png", "step-2-email-3.png"],
+      quiz: [
+        { q: "1. What should you always include before sending a professional email?", options: ["A clear Subject Heading and polite greeting", "A random emoji only", "Leave everything blank"], ans: 0 },
+        { q: "2. How does Gmail help you address emails to your teachers?", options: ["It suggests their full email when you start typing their name in the 'To:' box", "You must memorize their whole address number", "It sends it automatically without typing"], ans: 0 },
+        { q: "3. Why is it important to be polite in school communications?", options: ["It shows respect and ensures clear, professional communication", "It makes the email send faster", "It is required to unlock Chrome"], ans: 0 }
+      ]
+    },
+    3: {
+      title: "Step 3: Google Drive & File Organization",
+      infoNote: "Keep your Drive clean! You can tidy up your Google Drive at any time by clicking, dragging, and dropping loose files directly into the correct folder.",
+      task: "Open Google Drive. Click '+ New' and make a folder called 'Grade 6 Science'. Inside it, make a sub-folder called 'Unit 1'. Practice dragging loose files into folders to keep your Drive organized.",
+      images: ["step-3-drive-folders-1.png", "step-3-drive-folders-2.png", "step-3-drive-folders.gif"],
+      quiz: [
+        { q: "1. What button creates a new folder in Drive?", options: ["+ New button", "Search bar", "Trash"], ans: 0 },
+        { q: "2. How can you quickly move a loose file into a folder in Drive?", options: ["Click, drag, and drop it into the folder", "Delete the file", "Rename the file to 'Folder'"], ans: 0 },
+        { q: "3. Why is it important to keep your Google Drive tidy?", options: ["To stay organized and find schoolwork quickly", "It saves laptop battery", "It bolds your text"], ans: 0 }
+      ]
+    },
+    4: {
+      title: "Step 4: Creating Files Inside Folders",
+      task: "Go inside your 'Unit 1' folder in Drive. Click '+ New' and create a new Google Doc inside this folder. Title it 'My Journal'.",
+      images: ["step-4-create-doc-1.png", "step-4-create-doc-2.png", "step-4-create-doc-3.png"],
+      quiz: [
+        { q: "1. Where should you create new school documents?", options: ["Inside the specific class or unit folder", "In the Trash folder", "On the general desktop"], ans: 0 },
+        { q: "2. How are files saved when created inside a folder?", options: ["They are automatically saved directly inside that folder", "They save to your Downloads folder", "You must manually export them"], ans: 0 },
+        { q: "3. How do you rename an untitled Google Doc?", options: ["Click 'Untitled Document' at the top left corner", "Type the name inside sentence 1", "Close the browser tab"], ans: 0 },
+        { q: "4. [Review] What app is best used for slideshow presentations?", options: ["Google Slides", "Google Docs", "Google Drive"], ans: 0 }
+      ]
+    },
+    5: {
+      title: "Step 5: Text Formatting Skills",
+      task: "In 'My Journal', type three sentences. Make Sentence 1 BOLD. Make Sentence 2 ITALIC. Highlight Sentence 3 YELLOW.",
+      images: ["step-5-formatting.png"],
+      quiz: [
+        { q: "1. Which icon toolbar letter makes text BOLD?", options: ["B", "I", "U"], ans: 0 },
+        { q: "2. Which keyboard shortcut makes text Bold?", options: ["Ctrl + B (or Cmd + B)", "Ctrl + Z", "Ctrl + P"], ans: 0 },
+        { q: "3. What tool changes the background color behind text?", options: ["Text Color", "Highlight Color", "Font Size"], ans: 1 }
+      ]
+    },
+    6: {
+      title: "Step 6: Keyboard Shortcuts",
+      task: "Practice fast shortcuts! Select text in Docs. Press Ctrl+C to copy, and Ctrl+V to paste it below. Practice Ctrl+Z to undo.",
+      images: ["step-6-shortcuts-1.gif", "step-6-shortcuts-2.png"],
+      quiz: [
+        { q: "1. What does the Ctrl + Z shortcut do?", options: ["Copy text", "Undo your last action", "Paste text"], ans: 1 },
+        { q: "2. What is the keyboard shortcut to Paste?", options: ["Ctrl + V", "Ctrl + P", "Ctrl + C"], ans: 0 },
+        { q: "3. [Review] Where do you change sharing settings in Docs?", options: ["Share button (top right corner)", "File -> Print", "View menu"], ans: 0 }
+      ]
+    },
+    7: {
+      title: "Step 7: Sharing & Emailing Links",
+      task: "Click the blue 'Share' button on your Doc. Change access to 'Anyone with link can VIEW'. Copy the link, open Gmail, and paste the link into an email to your homeroom teacher.",
+      images: ["step-7-share-link.png"],
+      quiz: [
+        { q: "1. 'Viewer' access means other people can:", options: ["Only read your document without editing", "Delete your text", "Re-title your doc"], ans: 0 },
+        { q: "2. What should you do after copying a share link?", options: ["Paste it into an email to your teacher", "Close your laptop", "Delete the file"], ans: 0 },
+        { q: "3. What mode blocks everyone except explicitly added users?", options: ["Restricted mode", "Viewer mode", "Editor mode"], ans: 0 }
+      ]
+    },
+    8: {
+      title: "Step 8: Exporting & Downloading PDFs",
+      task: "Go to your Google Drive, find your 'Unit 1' folder, and open 'My Journal'. Click File -> Download -> PDF Document (.pdf) to save a copy to your computer.",
+      images: ["step-8-download-pdf.png"],
+      quiz: [
+        { q: "1. Where do you find 'My Journal' to download it?", options: ["In Google Drive -> Unit 1 folder", "In Chrome Downloads", "In Trash"], ans: 0 },
+        { q: "2. Which menu path downloads your Doc as a PDF?", options: ["File -> Download -> PDF Document (.pdf)", "Edit -> Select All", "View -> Full Screen"], ans: 0 },
+        { q: "3. Why export work as a PDF?", options: ["It preserves formatting across all devices", "It deletes the file from Drive", "It adds audio clips"], ans: 0 }
+      ]
+    },
+    9: {
+      title: "Step 9: Google Slides Features",
+      task: "Open Drive. Create a Google Slide inside 'Unit 1'. Change the slide background color, insert an image, and re-order slides in the left panel.",
+      images: ["step-9-slides-1.png", "step-9-slides-1.gif", "step-9-slides-2.png"],
+      quiz: [
+        { q: "1. How do you change slide appearance in Google Slides?", options: ["Right click slide -> Change Background", "Press Ctrl + Z", "Close tab"], ans: 0 },
+        { q: "2. How can you re-order slides in a deck?", options: ["Drag and drop slides in the left panel preview", "Type new numbers", "Export as PDF"], ans: 0 },
+        { q: "3. What menu option inserts images or text boxes?", options: ["Insert menu", "File menu", "Format menu"], ans: 0 }
+      ]
+    },
+    10: {
+      title: "Step 10: Cumulative Skills Review",
+      task: "Complete this full 10-question mastery quiz covering Drive, Docs, Gmail, Formatting, Shortcuts, Sharing, PDFs, and Slides!",
+      images: ["step-10-review.png"],
+      quiz: [
+        { q: "1. [Drive] How do you keep loose files organized in Google Drive?", options: ["Drag and drop them into the correct folder", "Leave them in Trash", "Rename everything 'Doc'"], ans: 0 },
+        { q: "2. [Email] What helps you address an email quickly to a teacher in Gmail?", options: ["Start typing their name in the 'To:' field", "Call them on the phone", "Look up their home address"], ans: 0 },
+        { q: "3. [Email] What should always be included in a polite school email?", options: ["A clear Subject Heading and respectful message", "Only emojis", "Leave subject line empty"], ans: 0 },
+        { q: "4. [Docs] How are new files saved when created inside a specific folder?", options: ["Automatically saved inside that active folder", "Saved to computer Desktop", "Saved to Trash"], ans: 0 },
+        { q: "5. [Formatting] Which toolbar tool changes the color behind selected text?", options: ["Highlight Color tool", "Font Size tool", "Page Orientation"], ans: 0 },
+        { q: "6. [Shortcuts] What is the keyboard shortcut to undo an accidental change?", options: ["Ctrl + Z (or Cmd + Z)", "Ctrl + C", "Ctrl + P"], ans: 0 },
+        { q: "7. [Sharing] What permission level allows others to view but not edit your document?", options: ["Viewer mode", "Editor mode", "Owner mode"], ans: 0 },
+        { q: "8. [PDF] What is the menu path to export your document as a PDF file?", options: ["File -> Download -> PDF Document (.pdf)", "Edit -> Paste", "View -> Zoom"], ans: 0 },
+        { q: "9. [Slides] How can you change the order of slides in Google Slides?", options: ["Drag and drop slide thumbnails in the left panel", "Delete and re-type them", "File -> Print"], ans: 0 },
+        { q: "10. [ManageBac] Where do you check official school assignment details & schedules?", options: ["ManageBac", "Google Maps", "Google Earth"], ans: 0 }
+      ]
+    },
+    "extension": {
+      isExtension: true,
+      title: "Extension: Master Project Challenge",
+      infoNote: "Incorporate all learned features into one final project to earn the Honors Certificate!",
+      task: "1. Go to Drive and create a folder named 'GSuite Master Project'.\n2. Inside it, create a Doc named 'Final Reflection'.\n3. Write 2 sentences. Make sentence 1 Bold and sentence 2 Highlighted.\n4. Download the Doc as a PDF.\n5. Open Gmail and send an email to gudruni@ptis.ac.th with your PDF attached!",
+      images: ["extension-master-project.png"],
+      quiz: [
+        { q: "1. Did you attach your downloaded PDF to the email?", options: ["Yes, attached!", "Not yet"], ans: 0 },
+        { q: "2. What email address did you send the final project to?", options: ["gudruni@ptis.ac.th", "teacher@gmail.com"], ans: 0 }
+      ]
+    }
+  };
+
+  let activeStep = null;
+  let completedSteps = JSON.parse(localStorage.getItem('gsuite_completed_steps_v2')) || [];
+  let completedExtension = localStorage.getItem('gsuite_extension_completed_v2') === 'true';
+
+  // Build Grid Cards Dynamically
+  const grid = document.getElementById('card-grid');
+  Object.keys(challenges).forEach(s => {
+    if (s === "extension") {
+      grid.innerHTML += `
+        <div class="card extension-card" id="card-extension" onclick="openDrawer('extension')">
+          <h3>⭐ Extension</h3>
+          <p>Master Project Challenge</p>
+        </div>
+      `;
+    } else {
+      grid.innerHTML += `
+        <div class="card" id="card-${s}" onclick="openDrawer(${s})">
+          <h3>Step ${s}</h3>
+          <p>${challenges[s].title.split(': ')[1]}</p>
+        </div>
+      `;
+    }
+  });
+
+  updateProgressUI();
+
+  function openDrawer(step) {
+    activeStep = step;
+    const data = challenges[step];
+    document.getElementById('drawer-title').innerText = data.title;
+    document.getElementById('drawer-task').innerText = data.task;
+    
+    // Render Gallery Images / GIFs
+    const galleryGrid = document.getElementById('gallery-grid');
+    galleryGrid.innerHTML = '';
+    
+    data.images.forEach((imgSrc) => {
+      const imgElem = document.createElement('img');
+      imgElem.src = imgSrc;
+      imgElem.alt = "Screenshot guide";
+      imgElem.onclick = function() { zoomImage(imgSrc); };
+      imgElem.onerror = function() {
+        this.src = `https://via.placeholder.com/300x160/14532d/ffffff?text=${encodeURIComponent(imgSrc)}`;
+      };
+      galleryGrid.appendChild(imgElem);
+    });
+
+    // Show/Hide Info Note
+    const infoBox = document.getElementById('drawer-info');
+    if (data.infoNote) {
+      infoBox.innerText = data.infoNote;
+      infoBox.style.display = 'block';
+    } else {
+      infoBox.style.display = 'none';
+    }
+    
+    // Render Quiz Questions
+    const container = document.getElementById('quiz-container');
+    container.innerHTML = '';
+    
+    data.quiz.forEach((qItem, qIdx) => {
+      let optionsHTML = qItem.options.map((opt, oIdx) => `
+        <label>
+          <input type="radio" name="q${qIdx}" value="${oIdx}"> ${opt}
+        </label>
+      `).join('');
+      
+      container.innerHTML += `
+        <div class="quiz-question">
+          <p>${qItem.q}</p>
+          <div class="quiz-options">${optionsHTML}</div>
+        </div>
+      `;
+    });
+
+    document.getElementById('drawer').classList.add('open');
+    document.getElementById('overlay').classList.add('open');
+  }
+
+  function closeDrawer() {
+    document.getElementById('drawer').classList.remove('open');
+    document.getElementById('overlay').classList.remove('open');
+  }
+
+  function zoomImage(src) {
+    document.getElementById('lightbox-img').src = src;
+    document.getElementById('lightbox').style.display = 'flex';
+  }
+
+  function checkQuiz() {
+    const data = challenges[activeStep];
+    let score = 0;
+
+    data.quiz.forEach((qItem, qIdx) => {
+      const selected = document.querySelector(`input[name="q${qIdx}"]:checked`);
+      if (selected && parseInt(selected.value) === qItem.ans) {
+        score++;
+      }
+    });
+
+    if (score === data.quiz.length) {
+      alert("🎉 Great job! You passed this step!");
+      if (activeStep === 'extension') {
+        completedExtension = true;
+        localStorage.setItem('gsuite_extension_completed_v2', 'true');
+      } else if (!completedSteps.includes(activeStep)) {
+        completedSteps.push(activeStep);
+        localStorage.setItem('gsuite_completed_steps_v2', JSON.stringify(completedSteps));
+      }
+      updateProgressUI();
+      closeDrawer();
+    } else {
+      alert(`You got ${score} out of ${data.quiz.length} correct. Please review your answers and try again!`);
+    }
+  }
+
+  function updateProgressUI() {
+    const totalSteps = 10;
+    completedSteps.forEach(step => {
+      const card = document.getElementById(`card-${step}`);
+      if (card) card.classList.add('completed');
+    });
+
+    if (completedExtension) {
+      const extCard = document.getElementById('card-extension');
+      if (extCard) extCard.classList.add('completed');
+      document.getElementById('claim-genius-btn').style.display = 'inline-block';
+    }
+
+    document.getElementById('progress-status').innerText = `${completedSteps.length} of ${totalSteps} Steps Completed`;
+
+    if (completedSteps.length === totalSteps) {
+      document.getElementById('claim-cert-btn').style.display = 'inline-block';
+    }
+  }
+
+  function openCert() { document.getElementById('cert-modal').style.display = 'block'; }
+  function closeCert() { document.getElementById('cert-modal').style.display = 'none'; }
+
+  function openGeniusCert() { document.getElementById('genius-modal').style.display = 'block'; }
+  function closeGeniusCert() { document.getElementById('genius-modal').style.display = 'none'; }
+</script>
+</body>
+</html>
